@@ -47,7 +47,7 @@
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="Pgw-jO-wyF" kind="show" id="k6X-Zr-0pN"/>
+                                                        <segue destination="Pgw-jO-wyF" kind="show" identifier="detailSegue" id="k6X-Zr-0pN"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdw-IC-3fg">
@@ -73,11 +73,17 @@
                                                         <color key="titleColor" red="0.111662079" green="0.111662079" blue="0.111662079" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="evr-zD-DiV" kind="presentation" id="LHn-px-sdH"/>
+                                                        <segue destination="evr-zD-DiV" kind="presentation" identifier="editSegue" id="LHn-px-sdH"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="completedButton" destination="Gbw-8X-6eL" id="Ola-g7-oLm"/>
+                                            <outlet property="seeDetailsButton" destination="dBX-Gr-pSq" id="GAp-dD-lZC"/>
+                                            <outlet property="taskDetail" destination="NK8-j3-2rs" id="3rk-rj-cdG"/>
+                                            <outlet property="taskTitle" destination="wdw-IC-3fg" id="rwC-5h-mjt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -101,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="1076" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Task View Controller-->
         <scene sceneID="OlD-Xd-uxc">
             <objects>
-                <viewController id="QH7-1J-D07" sceneMemberID="viewController">
+                <viewController id="QH7-1J-D07" customClass="AddTaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2iU-Gd-qfh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,6 +139,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="addButtonClicked:" destination="QH7-1J-D07" eventType="touchUpInside" id="lhh-xR-9uI"/>
                                     <segue destination="scP-Ze-oqQ" kind="presentation" id="sQV-vg-ktZ"/>
                                 </connections>
                             </button>
@@ -153,6 +160,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oxp-Si-5b1"/>
                     </view>
+                    <connections>
+                        <outlet property="taskDescription" destination="eB9-n4-ZCM" id="l8k-oT-I2E"/>
+                        <outlet property="taskTitle" destination="P0Y-IQ-I6W" id="suY-pv-EAG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2C-m4-uNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -239,26 +250,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldc-Ns-kZ5">
-                                <rect key="frame" x="36" y="296" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Edit">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3N-RN-Cox">
-                                <rect key="frame" x="264" y="296" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Completed">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1wz-Ix-Fxy">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -270,6 +261,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="idI-Rc-YXx"/>
                     </view>
+                    <connections>
+                        <outlet property="detailDescription" destination="fpU-DN-Eus" id="CrA-nf-HA0"/>
+                        <outlet property="detailTaskTitle" destination="D9n-sy-n1V" id="Epz-0s-cOC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9u-6i-nKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -278,7 +273,6 @@
         <!--Navigation Controller-->
         <scene sceneID="exU-GM-LNl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dXs-Rv-SBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="scP-Ze-oqQ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IZY-LF-vwa">
@@ -290,6 +284,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6zw-yW-y8h"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXs-Rv-SBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
@@ -298,6 +293,6 @@
         <image name="icons8-add-1" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hZt-tg-Rc7"/>
+        <segue reference="sQV-vg-ktZ"/>
     </inferredMetricsTieBreakers>
 </document>

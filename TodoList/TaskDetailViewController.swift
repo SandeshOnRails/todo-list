@@ -9,9 +9,23 @@
 import UIKit
 
 class TaskDetailViewController: UIViewController {
+    
+    @IBOutlet weak var detailTaskTitle: UILabel!
+    
+    
+    @IBOutlet weak var detailDescription: UILabel!
+    
+    var titleName: String!
+    
+    var detailName: String!
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        detailTaskTitle.text = titleName
+        detailDescription.text = detailName
 
         // Do any additional setup after loading the view.
     }

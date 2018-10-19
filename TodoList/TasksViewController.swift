@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
@@ -14,6 +15,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var tasks:[TaskLists] = []
     
     
     override func viewDidLoad() {
@@ -24,20 +27,97 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 150
+        tableView.reloadData()
+        
         
     }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2;
+        
+        return self.tasks.count;
+        
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskViewCell", for: indexPath)
+        let currentTask = self.tasks[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskViewCell", for: indexPath) as! TaskViewCell
+        cell.taskTitle.text! = currentTask.title
+        cell.taskDetail.text! = currentTask.detail
         return cell
         
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "ListTask")
+        
+        do {
+           let  taskManagedObj = try managedContext.fetch(fetchRequest)
+            setTask(taskManagedObj)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+    }
+ 
+    
+    
+    func setTask(_ managedObj: [NSManagedObject]) {
+        
+        for task in managedObj {
+            
+            let taskTitle = task.value(forKeyPath: "title") as! String
+            let taskDescription = task.value(forKeyPath: "detail") as! String
+           let newTask = TaskLists(taskTitle,taskDescription)
+           self.tasks.append(newTask)
+        }
+        
+        
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        let id = segue.identifier;
+        
+        if id == "detailSegue" {
+            
+            let from = sender as AnyObject
+            
+            let cell = from.superview?.superview as! TaskViewCell
+            
+            let detailView = segue.destination as! TaskDetailViewController
+            detailView.titleName = cell.taskDetail.text!
+            detailView.detailName = cell.taskTitle.text!
+            
+        
+            
+        }
+ 
+        
+       
+        
+    }
+    
+    
+  
+    
     
     
     

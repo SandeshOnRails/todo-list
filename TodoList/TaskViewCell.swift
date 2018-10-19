@@ -9,7 +9,21 @@
 import UIKit
 
 class TaskViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var taskTitle: UILabel!
+    
+    
+    @IBOutlet weak var taskDetail: UILabel!
+    
+    
+    @IBOutlet weak var completedButton: UIButton!
+    
+    
+    
+    @IBOutlet weak var seeDetailsButton: UIButton!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
