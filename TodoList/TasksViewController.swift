@@ -103,8 +103,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             let cell = from.superview?.superview as! TaskViewCell
             
             let detailView = segue.destination as! TaskDetailViewController
-            detailView.titleName = cell.taskDetail.text!
-            detailView.detailName = cell.taskTitle.text!
+            detailView.titleName = cell.taskTitle.text!
+            detailView.detailName = cell.taskDetail.text!
             
         
             
@@ -116,7 +116,60 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
+    
+    
   
+    @IBAction func taskCompleteButtonClicked(_ sender: Any) {
+        
+        
+        let from = sender as AnyObject
+        
+        let cell = from.superview?.superview as! TaskViewCell
+        
+        let indexPath = tableView.indexPath(for:cell)
+        
+        let indexToRemove = indexPath?.row
+        
+        let titleName = cell.taskTitle.text!
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "ListTask")
+        
+        do {
+            let  taskManagedObj = try managedContext.fetch(fetchRequest)
+            
+            for obj in taskManagedObj {
+                
+                let taskTitle = obj.value(forKeyPath: "title") as! String
+                if tasks[indexToRemove!].title == taskTitle {
+                     managedContext.delete(obj)
+                }
+            }
+            
+            do {
+               try managedContext.save()
+                tasks.remove(at:indexToRemove!)
+                self.tableView.reloadData()
+                
+            }
+            
+            catch {
+                print (error)
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        
+    }
     
     
     
