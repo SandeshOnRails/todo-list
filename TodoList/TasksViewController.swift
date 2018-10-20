@@ -109,6 +109,22 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
             
         }
+        
+        if id == "editSegue" {
+            
+            let from = sender as AnyObject
+            
+            let cell = from.superview?.superview as! TaskViewCell
+            
+            let toUpdate = cell.taskTitle.text!
+            
+            let detailView = segue.destination as! EditTaskViewController
+            
+            detailView.editTitle = cell.taskTitle.text!
+            detailView.editDetail = cell.taskDetail.text!
+            
+            
+        }
  
         
        
@@ -173,6 +189,13 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     
+    
+    
+    @IBAction func editTaskClicked(_ sender: Any) {
+        
+        
+        
+    }
     
     
 

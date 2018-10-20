@@ -18,6 +18,7 @@
 		022DF21A217983A400DF43B7 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DF219217983A400DF43B7 /* TaskDetailViewController.swift */; };
 		022DF21E217A837700DF43B7 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DF21D217A837700DF43B7 /* AddTaskViewController.swift */; };
 		022DF222217A914000DF43B7 /* ListTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DF221217A914000DF43B7 /* ListTask.swift */; };
+		022DF224217AAB9300DF43B7 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DF223217AAB9300DF43B7 /* EditTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		022DF219217983A400DF43B7 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		022DF21D217A837700DF43B7 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		022DF221217A914000DF43B7 /* ListTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTask.swift; sourceTree = "<group>"; };
+		022DF223217AAB9300DF43B7 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				022DF219217983A400DF43B7 /* TaskDetailViewController.swift */,
 				022DF21D217A837700DF43B7 /* AddTaskViewController.swift */,
 				022DF221217A914000DF43B7 /* ListTask.swift */,
+				022DF223217AAB9300DF43B7 /* EditTaskViewController.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				022DF21821795C2500DF43B7 /* TaskViewCell.swift in Sources */,
 				022DF21A217983A400DF43B7 /* TaskDetailViewController.swift in Sources */,
 				022DF21E217A837700DF43B7 /* AddTaskViewController.swift in Sources */,
+				022DF224217AAB9300DF43B7 /* EditTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

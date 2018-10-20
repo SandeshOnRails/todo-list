@@ -76,6 +76,7 @@
                                                         <color key="titleColor" red="0.111662079" green="0.111662079" blue="0.111662079" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="editTaskClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XzK-5o-j9n"/>
                                                         <segue destination="evr-zD-DiV" kind="presentation" identifier="editSegue" id="LHn-px-sdH"/>
                                                     </connections>
                                                 </button>
@@ -172,10 +173,10 @@
             </objects>
             <point key="canvasLocation" x="6" y="1113"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Task View Controller-->
         <scene sceneID="aLD-qW-bXd">
             <objects>
-                <viewController id="evr-zD-DiV" sceneMemberID="viewController">
+                <viewController id="evr-zD-DiV" customClass="EditTaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vMJ-rm-ZGF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,6 +206,7 @@
                                     <color key="titleShadowColor" red="0.111662079" green="0.111662079" blue="0.111662079" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
+                                    <action selector="editingDoneButtonClicked:" destination="evr-zD-DiV" eventType="touchUpInside" id="7qB-Lp-Q0v"/>
                                     <segue destination="scP-Ze-oqQ" kind="presentation" id="MfN-fr-jIQ"/>
                                 </connections>
                             </button>
@@ -226,6 +228,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="pes-lQ-9dH"/>
                     </view>
+                    <connections>
+                        <outlet property="detailToEdit" destination="rhg-qp-2xU" id="mX3-he-sDF"/>
+                        <outlet property="titleToEdit" destination="XXd-Jb-IUp" id="jCS-JO-0GF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqI-q9-I1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -296,6 +302,6 @@
         <image name="icons8-add-1" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sQV-vg-ktZ"/>
+        <segue reference="MfN-fr-jIQ"/>
     </inferredMetricsTieBreakers>
 </document>
