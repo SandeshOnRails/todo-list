@@ -22,11 +22,16 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        loadData()
+        
 
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 150
+        self.tableView.backgroundColor = UIColor.green
+
+
         tableView.reloadData()
         
         
@@ -46,9 +51,14 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskViewCell", for: indexPath) as! TaskViewCell
         cell.taskTitle.text! = currentTask.title
         cell.taskDetail.text! = currentTask.detail
+        //cell.backgroundColor = UIColor.yellow
+
         return cell
         
     }
+    
+    
+    /*
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +84,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
  
+ */
     
     
     func setTask(_ managedObj: [NSManagedObject]) {
@@ -138,6 +149,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func taskCompleteButtonClicked(_ sender: Any) {
         
         
+        
         let from = sender as AnyObject
         
         let cell = from.superview?.superview as! TaskViewCell
@@ -173,7 +185,10 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             do {
                try managedContext.save()
                 tasks.remove(at:indexToRemove!)
+                self.save(cell.taskTitle.text!, cell.taskDetail.text!)
                 self.tableView.reloadData()
+
+
                 
             }
             
@@ -184,7 +199,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
-        
+
     }
     
     
@@ -197,6 +212,95 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
+    func save(_ title: String, _ detail: String) {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Completed",
+                                       in: managedContext)!
+        
+        let newTask = NSManagedObject(entity: entity,
+                                      insertInto: managedContext)
+        
+        newTask.setValue(title, forKeyPath: "title")
+        newTask.setValue(detail, forKeyPath: "detail")
+        
+        
+        
+        
+        do {
+            try managedContext.save()
+            
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
-
+    
+    func loadData() {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "ListTask")
+        
+        do {
+            let  taskManagedObj = try managedContext.fetch(fetchRequest)
+            setTask(taskManagedObj)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+    func deleteThatShit() {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Completed")
+        
+        do {
+            let  taskManagedObj = try managedContext.fetch(fetchRequest)
+            
+            for obj in taskManagedObj {
+                
+               
+                managedContext.delete(obj)
+            }
+            
+            do {
+                try managedContext.save()
+                
+            }
+                
+            catch {
+                print (error)
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+ 
 }

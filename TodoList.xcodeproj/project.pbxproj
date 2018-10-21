@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0220B426217C0D6F00C74656 /* CompletedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0220B425217C0D6F00C74656 /* CompletedCellTableViewCell.swift */; };
 		022DF1F02179563C00DF43B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DF1EF2179563C00DF43B7 /* AppDelegate.swift */; };
 		022DF1F52179563C00DF43B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 022DF1F32179563C00DF43B7 /* Main.storyboard */; };
 		022DF1F82179563C00DF43B7 /* TodoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 022DF1F62179563C00DF43B7 /* TodoList.xcdatamodeld */; };
@@ -19,6 +20,7 @@
 		022DF21E217A837700DF43B7 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DF21D217A837700DF43B7 /* AddTaskViewController.swift */; };
 		022DF222217A914000DF43B7 /* ListTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DF221217A914000DF43B7 /* ListTask.swift */; };
 		022DF224217AAB9300DF43B7 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DF223217AAB9300DF43B7 /* EditTaskViewController.swift */; };
+		025833FE217AF65700DF9CC7 /* CompletedTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025833FD217AF65700DF9CC7 /* CompletedTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0220B425217C0D6F00C74656 /* CompletedCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedCellTableViewCell.swift; sourceTree = "<group>"; };
 		022DF1EC2179563C00DF43B7 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		022DF1EF2179563C00DF43B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		022DF1F42179563C00DF43B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		022DF21D217A837700DF43B7 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		022DF221217A914000DF43B7 /* ListTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTask.swift; sourceTree = "<group>"; };
 		022DF223217AAB9300DF43B7 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
+		025833FD217AF65700DF9CC7 /* CompletedTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 				022DF21721795C2500DF43B7 /* TaskViewCell.swift */,
 				022DF1EF2179563C00DF43B7 /* AppDelegate.swift */,
 				022DF1F32179563C00DF43B7 /* Main.storyboard */,
+				0220B425217C0D6F00C74656 /* CompletedCellTableViewCell.swift */,
 				022DF1F92179563C00DF43B7 /* Assets.xcassets */,
 				022DF1FB2179563C00DF43B7 /* LaunchScreen.storyboard */,
 				022DF1FE2179563C00DF43B7 /* Info.plist */,
@@ -101,6 +106,7 @@
 				022DF21D217A837700DF43B7 /* AddTaskViewController.swift */,
 				022DF221217A914000DF43B7 /* ListTask.swift */,
 				022DF223217AAB9300DF43B7 /* EditTaskViewController.swift */,
+				025833FD217AF65700DF9CC7 /* CompletedTaskViewController.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -219,8 +225,10 @@
 				022DF1F82179563C00DF43B7 /* TodoList.xcdatamodeld in Sources */,
 				022DF222217A914000DF43B7 /* ListTask.swift in Sources */,
 				022DF214217956AE00DF43B7 /* TasksViewController.swift in Sources */,
+				0220B426217C0D6F00C74656 /* CompletedCellTableViewCell.swift in Sources */,
 				022DF21821795C2500DF43B7 /* TaskViewCell.swift in Sources */,
 				022DF21A217983A400DF43B7 /* TaskDetailViewController.swift in Sources */,
+				025833FE217AF65700DF9CC7 /* CompletedTaskViewController.swift in Sources */,
 				022DF21E217A837700DF43B7 /* AddTaskViewController.swift in Sources */,
 				022DF224217AAB9300DF43B7 /* EditTaskViewController.swift in Sources */,
 			);
