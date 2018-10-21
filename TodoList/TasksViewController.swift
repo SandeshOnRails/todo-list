@@ -19,10 +19,19 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     var tasks:[TaskLists] = []
     
     
+    
+
+    
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         loadData()
+        //deleteThatShit()
+        //CompletedData.hello()
+        
+
         
 
         // Do any additional setup after loading the view.
@@ -97,6 +106,10 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
            self.tasks.append(newTask)
         }
         
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
         
     }
     
@@ -159,6 +172,9 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         let indexToRemove = indexPath?.row
         
         let titleName = cell.taskTitle.text!
+        
+        var task = TaskLists(titleName, cell.taskDetail.text!)
+        CompletedData.completed.append(task)
         
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {

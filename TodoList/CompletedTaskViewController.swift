@@ -15,22 +15,50 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
     
     var completedTasks:[TaskLists] = []
     
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadFromDatabase()
-
-        // Do any additional setup after loading the view.
-        
+       
+        /*
+        let thisGroup = DispatchGroup()
+        thisGroup.enter()
+        self.loadFromDatabase()
+        thisGroup.leave()
+        thisGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+           
+        }
+ */
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 120
-        self.tableView.reloadData()
+
+        
+        
+        
+       
+        
+       
+        
+
+        // Do any additional setup after loading the view.
+        
+      
+        
+        
+       
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.completedTasks.count
+        return CompletedData.completed.count
+        //self.completedTasks.count
+
+        
         
     }
     
@@ -38,9 +66,9 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CompletedCell", for: indexPath) as! CompletedCellTableViewCell
         
-        let title = self.completedTasks[indexPath.row].title
+        let title = CompletedData.completed[indexPath.row].title
         
-        let detail = self.completedTasks[indexPath.row].detail
+        let detail = CompletedData.completed [indexPath.row].detail
         
         cell.title.text = title
         cell.details.text = detail
@@ -50,30 +78,9 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
-    /*
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Completed")
-        
-        do {
-            let  taskManagedObj = try managedContext.fetch(fetchRequest)
-            setCompletedTask(taskManagedObj)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-    }
- */
+    
+    
+ 
     
     
     
@@ -84,12 +91,20 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
             let taskTitle = task.value(forKeyPath: "title") as! String
             let taskDescription = task.value(forKeyPath: "detail") as! String
             let newTask = TaskLists(taskTitle,taskDescription)
-            self.completedTasks.append(newTask)
+            CompletedData.completed.append(newTask)
         }
         
         
-    }
+        
    
+       self.tableView.reloadData()
+        
+        
+        
+    }
+ 
+   
+    
     
     func loadFromDatabase() {
         
@@ -106,13 +121,24 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
         
         do {
             let  taskManagedObj = try managedContext.fetch(fetchRequest)
-            setCompletedTask(taskManagedObj)
+             setCompletedTask(taskManagedObj)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
+    }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      //  self.loadFromDatabase()
+        self.tableView.reloadData()
         
     }
+ 
+
+    
     
 
 }
