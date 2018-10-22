@@ -18,7 +18,7 @@ class CompletedData {
         
     }
     
-   static func hello() {
+   static func fetchData() {
         
 guard let appDelegate =
     
@@ -43,8 +43,7 @@ do {
     
   static  func setCompletedTask(_ managedObj: [NSManagedObject]) {
     
-    var comp: [TaskLists]
-        
+    
         for task in managedObj {
             
             let taskTitle = task.value(forKeyPath: "title") as! String
@@ -52,10 +51,6 @@ do {
             let newTask = TaskLists(taskTitle,taskDescription)
             CompletedData.completed.append(newTask)
         }
-        
-        
-        
-        
         
         
     }

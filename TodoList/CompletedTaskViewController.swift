@@ -9,55 +9,23 @@
 import UIKit
 import CoreData
 
-class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var completedTasks:[TaskLists] = []
     
-    
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        /*
-        let thisGroup = DispatchGroup()
-        thisGroup.enter()
-        self.loadFromDatabase()
-        thisGroup.leave()
-        thisGroup.notify(queue: .main) {
-            self.tableView.reloadData()
-           
-        }
- */
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 120
-
-        
-        
-        
-       
-        
-       
-        
-
-        // Do any additional setup after loading the view.
-        
-      
-        
-        
-       
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return CompletedData.completed.count
-        //self.completedTasks.count
-
         
         
     }
@@ -78,12 +46,6 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
-    
-    
- 
-    
-    
-    
     func setCompletedTask(_ managedObj: [NSManagedObject]) {
         
         for task in managedObj {
@@ -93,14 +55,9 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
             let newTask = TaskLists(taskTitle,taskDescription)
             CompletedData.completed.append(newTask)
         }
-        
-        
-        
    
        self.tableView.reloadData()
-        
-        
-        
+    
     }
  
    
@@ -132,13 +89,8 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      //  self.loadFromDatabase()
         self.tableView.reloadData()
         
     }
- 
-
-    
-    
 
 }

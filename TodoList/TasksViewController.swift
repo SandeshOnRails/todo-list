@@ -10,37 +10,24 @@ import UIKit
 import CoreData
 
 class TasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-   
     
-    
-
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
     var tasks:[TaskLists] = []
-    
-    
-    
 
-    
-    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         loadData()
         //deleteThatShit()
-        //CompletedData.hello()
         
-
-        
-
-        // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 150
         self.tableView.backgroundColor = UIColor.green
-
-
         tableView.reloadData()
         
         
@@ -60,40 +47,11 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskViewCell", for: indexPath) as! TaskViewCell
         cell.taskTitle.text! = currentTask.title
         cell.taskDetail.text! = currentTask.detail
-        //cell.backgroundColor = UIColor.yellow
 
         return cell
         
     }
     
-    
-    /*
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "ListTask")
-        
-        do {
-           let  taskManagedObj = try managedContext.fetch(fetchRequest)
-            setTask(taskManagedObj)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-    }
- 
- */
     
     
     func setTask(_ managedObj: [NSManagedObject]) {
