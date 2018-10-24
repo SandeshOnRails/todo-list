@@ -17,9 +17,7 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = 120
+       
     }
     
     
@@ -89,8 +87,16 @@ class CompletedTaskViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+         tableView.setNeedsLayout()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 120
+        tableView.reloadData()
         self.tableView.reloadData()
         
     }
+    
+    
+   
 
 }
