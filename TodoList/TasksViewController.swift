@@ -22,7 +22,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         super.viewDidLoad()
         loadData()
-        //deleteThatShit()
+        //deleteCompletedTasks()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -240,7 +240,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    func deleteThatShit() {
+    func deleteCompletedTasks() {
         
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
